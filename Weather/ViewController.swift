@@ -9,11 +9,79 @@ import UIKit
 
 class ViewController: UIViewController {
 
+
+
+	private lazy var collectionView: UICollectionView = {
+		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+		collectionView.register(
+			CollectionViewCell.self,
+			forCellWithReuseIdentifier: CollectionViewCell.identifier
+		)
+		collectionView.delegate = self
+		collectionView.dataSource = self
+		collectionView.showsVerticalScrollIndicator = false
+		collectionView.showsHorizontalScrollIndicator = false
+
+		return collectionView
+	}()
+
+	// MARK: UIViewController Lifecycle
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+
+		self.view.addSubview(self.collectionView)
 	}
 
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		guard let frame = self.view.window?.windowScene?.screen.bounds else { return }
+
+		self.collectionView.frame = frame
+	}
+
+
+}
+
+
+extension ViewController: UICollectionViewDataSource {
+
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 10
+	}
+
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(
+			withReuseIdentifier: CollectionViewCell.identifier,
+			for: indexPath
+		) as! CollectionViewCell
+
+		cell.backgroundColor = .tintColor
+
+		return cell
+	}
+
+
+}
+
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let length = CGFloat.minimum(self.view.frame.size.width, self.view.frame.size.height) / 2 - 25
+
+		return CGSize(width: length, height: length)
+	}
+
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+		return UIEdgeInsets(top: 0, left: 20, bottom: 10, right: 20)
+	}
+
+
+}
+
+extension ViewController: UICollectionViewDelegate {
 
 }
 
