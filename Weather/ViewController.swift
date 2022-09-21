@@ -15,6 +15,10 @@ class ViewController: UIViewController {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
 		collectionView.register(
+			CollectionViewCell.self,
+			forCellWithReuseIdentifier: CollectionViewCell.identifier
+		)
+		collectionView.register(
 			DataCollectionViewCell.self,
 			forCellWithReuseIdentifier: DataCollectionViewCell.identifier
 		)
@@ -52,12 +56,18 @@ extension ViewController: UICollectionViewDataSource {
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(
-			withReuseIdentifier: DataCollectionViewCell.identifier,
-			for: indexPath
-		) as! DataCollectionViewCell
-
-		return cell
+		switch indexPath.item {
+		case 1, 5:
+			return collectionView.dequeueReusableCell(
+				withReuseIdentifier: CollectionViewCell.identifier,
+				for: indexPath
+			) as! CollectionViewCell
+		default:
+			return collectionView.dequeueReusableCell(
+				withReuseIdentifier: DataCollectionViewCell.identifier,
+				for: indexPath
+			) as! DataCollectionViewCell
+		}
 	}
 
 
@@ -69,7 +79,14 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		let length = CGFloat.minimum(self.view.frame.size.width, self.view.frame.size.height) / 2 - 25
 
-		return CGSize(width: length, height: length)
+		switch indexPath.item {
+		case 2:
+			return CGSize(width: length * 2 + 10, height: length)
+		case 5:
+			return CGSize(width: length * 2 + 10, height: length * 2 + 10)
+		default:
+			return CGSize(width: length, height: length)
+		}
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -78,6 +95,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 
 }
+
 
 extension ViewController: UICollectionViewDelegate {
 
