@@ -14,6 +14,7 @@
 		8549312528DB81AE000BDCF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8549312428DB81AE000BDCF4 /* Assets.xcassets */; };
 		8549312828DB81AE000BDCF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8549312628DB81AE000BDCF4 /* LaunchScreen.storyboard */; };
 		8549313028DB9995000BDCF4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549312F28DB9995000BDCF4 /* CollectionViewCell.swift */; };
+		8570B8BF28DBB06A0066AE0C /* DataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8570B8BE28DBB06A0066AE0C /* DataCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8549312728DB81AE000BDCF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8549312928DB81AE000BDCF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8549312F28DB9995000BDCF4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		8570B8BE28DBB06A0066AE0C /* DataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				8549311D28DB81AD000BDCF4 /* SceneDelegate.swift */,
 				8549311F28DB81AD000BDCF4 /* ViewController.swift */,
 				8549312F28DB9995000BDCF4 /* CollectionViewCell.swift */,
+				8570B8BE28DBB06A0066AE0C /* DataCollectionViewCell.swift */,
 				8549312428DB81AE000BDCF4 /* Assets.xcassets */,
 				8549312128DB81AD000BDCF4 /* Main.storyboard */,
 				8549312628DB81AE000BDCF4 /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				8549311C28DB81AD000BDCF4 /* AppDelegate.swift in Sources */,
 				8549313028DB9995000BDCF4 /* CollectionViewCell.swift in Sources */,
 				8549311E28DB81AD000BDCF4 /* SceneDelegate.swift in Sources */,
+				8570B8BF28DBB06A0066AE0C /* DataCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,8 +15,8 @@ class ViewController: UIViewController {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
 		collectionView.register(
-			CollectionViewCell.self,
-			forCellWithReuseIdentifier: CollectionViewCell.identifier
+			DataCollectionViewCell.self,
+			forCellWithReuseIdentifier: DataCollectionViewCell.identifier
 		)
 		collectionView.delegate = self
 		collectionView.dataSource = self
@@ -53,11 +53,9 @@ extension ViewController: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(
-			withReuseIdentifier: CollectionViewCell.identifier,
+			withReuseIdentifier: DataCollectionViewCell.identifier,
 			for: indexPath
-		) as! CollectionViewCell
-
-		cell.backgroundColor = .tintColor
+		) as! DataCollectionViewCell
 
 		return cell
 	}
