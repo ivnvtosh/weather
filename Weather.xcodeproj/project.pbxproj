@@ -59,8 +59,8 @@
 				8549311B28DB81AD000BDCF4 /* AppDelegate.swift */,
 				8549311D28DB81AD000BDCF4 /* SceneDelegate.swift */,
 				8549311F28DB81AD000BDCF4 /* ViewController.swift */,
-				8549312128DB81AD000BDCF4 /* Main.storyboard */,
 				8549312428DB81AE000BDCF4 /* Assets.xcassets */,
+				8549312128DB81AD000BDCF4 /* Main.storyboard */,
 				8549312628DB81AE000BDCF4 /* LaunchScreen.storyboard */,
 				8549312928DB81AE000BDCF4 /* Info.plist */,
 			);
