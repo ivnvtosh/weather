@@ -22,6 +22,10 @@ class ViewController: UIViewController {
 			DataCollectionViewCell.self,
 			forCellWithReuseIdentifier: DataCollectionViewCell.identifier
 		)
+		collectionView.register(
+			ForecastCollectionViewCell.self,
+			forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier
+		)
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.showsVerticalScrollIndicator = false
@@ -62,6 +66,11 @@ extension ViewController: UICollectionViewDataSource {
 				withReuseIdentifier: CollectionViewCell.identifier,
 				for: indexPath
 			) as! CollectionViewCell
+		case 2:
+			return collectionView.dequeueReusableCell(
+				withReuseIdentifier: ForecastCollectionViewCell.identifier,
+				for: indexPath
+			) as! ForecastCollectionViewCell
 		default:
 			return collectionView.dequeueReusableCell(
 				withReuseIdentifier: DataCollectionViewCell.identifier,
