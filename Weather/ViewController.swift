@@ -26,6 +26,10 @@ class ViewController: UIViewController {
 			ForecastCollectionViewCell.self,
 			forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier
 		)
+		collectionView.register(
+			MapCollectionViewCell.self,
+			forCellWithReuseIdentifier: MapCollectionViewCell.identifier
+		)
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.showsVerticalScrollIndicator = false
@@ -61,7 +65,7 @@ extension ViewController: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		switch indexPath.item {
-		case 1, 5:
+		case 1:
 			return collectionView.dequeueReusableCell(
 				withReuseIdentifier: CollectionViewCell.identifier,
 				for: indexPath
@@ -71,6 +75,11 @@ extension ViewController: UICollectionViewDataSource {
 				withReuseIdentifier: ForecastCollectionViewCell.identifier,
 				for: indexPath
 			) as! ForecastCollectionViewCell
+		case 5:
+			return collectionView.dequeueReusableCell(
+				withReuseIdentifier: MapCollectionViewCell.identifier,
+				for: indexPath
+			) as! MapCollectionViewCell
 		default:
 			return collectionView.dequeueReusableCell(
 				withReuseIdentifier: DataCollectionViewCell.identifier,

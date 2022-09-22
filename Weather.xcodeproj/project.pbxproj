@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		852561F728DC6C61004D337F /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852561F628DC6C61004D337F /* ForecastCollectionViewCell.swift */; };
-		852561F928DC78BA004D337F /* ForecastValueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852561F828DC78BA004D337F /* ForecastValueCollectionViewCell.swift */; };
+		852561F728DC6C61004D337F /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852561F628DC6C61004D337F /* ForecastCell.swift */; };
+		852561F928DC78BA004D337F /* ForecastValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852561F828DC78BA004D337F /* ForecastValueCell.swift */; };
 		8549311C28DB81AD000BDCF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549311B28DB81AD000BDCF4 /* AppDelegate.swift */; };
 		8549311E28DB81AD000BDCF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549311D28DB81AD000BDCF4 /* SceneDelegate.swift */; };
 		8549312028DB81AD000BDCF4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549311F28DB81AD000BDCF4 /* ViewController.swift */; };
 		8549312328DB81AD000BDCF4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8549312128DB81AD000BDCF4 /* Main.storyboard */; };
 		8549312528DB81AE000BDCF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8549312428DB81AE000BDCF4 /* Assets.xcassets */; };
 		8549312828DB81AE000BDCF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8549312628DB81AE000BDCF4 /* LaunchScreen.storyboard */; };
-		8549313028DB9995000BDCF4 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549312F28DB9995000BDCF4 /* CollectionViewCell.swift */; };
-		8570B8BF28DBB06A0066AE0C /* DataCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8570B8BE28DBB06A0066AE0C /* DataCollectionViewCell.swift */; };
+		8549313028DB9995000BDCF4 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549312F28DB9995000BDCF4 /* Cell.swift */; };
+		8570B8BF28DBB06A0066AE0C /* DataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8570B8BE28DBB06A0066AE0C /* DataCell.swift */; };
+		85C70DEE28DCA0EE00099EC5 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C70DED28DCA0EE00099EC5 /* MapCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		852561F628DC6C61004D337F /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
-		852561F828DC78BA004D337F /* ForecastValueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastValueCollectionViewCell.swift; sourceTree = "<group>"; };
+		852561F628DC6C61004D337F /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		852561F828DC78BA004D337F /* ForecastValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastValueCell.swift; sourceTree = "<group>"; };
 		8549311828DB81AD000BDCF4 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8549311B28DB81AD000BDCF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8549311D28DB81AD000BDCF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,8 +31,9 @@
 		8549312428DB81AE000BDCF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8549312728DB81AE000BDCF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8549312928DB81AE000BDCF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8549312F28DB9995000BDCF4 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		8570B8BE28DBB06A0066AE0C /* DataCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectionViewCell.swift; sourceTree = "<group>"; };
+		8549312F28DB9995000BDCF4 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		8570B8BE28DBB06A0066AE0C /* DataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCell.swift; sourceTree = "<group>"; };
+		85C70DED28DCA0EE00099EC5 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,16 +69,25 @@
 				8549311B28DB81AD000BDCF4 /* AppDelegate.swift */,
 				8549311D28DB81AD000BDCF4 /* SceneDelegate.swift */,
 				8549311F28DB81AD000BDCF4 /* ViewController.swift */,
-				8549312F28DB9995000BDCF4 /* CollectionViewCell.swift */,
-				8570B8BE28DBB06A0066AE0C /* DataCollectionViewCell.swift */,
-				852561F628DC6C61004D337F /* ForecastCollectionViewCell.swift */,
-				852561F828DC78BA004D337F /* ForecastValueCollectionViewCell.swift */,
+				85C70DEC28DCA0B800099EC5 /* CollectionViewCells */,
 				8549312428DB81AE000BDCF4 /* Assets.xcassets */,
 				8549312128DB81AD000BDCF4 /* Main.storyboard */,
 				8549312628DB81AE000BDCF4 /* LaunchScreen.storyboard */,
 				8549312928DB81AE000BDCF4 /* Info.plist */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		85C70DEC28DCA0B800099EC5 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				8549312F28DB9995000BDCF4 /* Cell.swift */,
+				8570B8BE28DBB06A0066AE0C /* DataCell.swift */,
+				852561F628DC6C61004D337F /* ForecastCell.swift */,
+				852561F828DC78BA004D337F /* ForecastValueCell.swift */,
+				85C70DED28DCA0EE00099EC5 /* MapCell.swift */,
+			);
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,11 +163,12 @@
 			files = (
 				8549312028DB81AD000BDCF4 /* ViewController.swift in Sources */,
 				8549311C28DB81AD000BDCF4 /* AppDelegate.swift in Sources */,
-				852561F728DC6C61004D337F /* ForecastCollectionViewCell.swift in Sources */,
-				8549313028DB9995000BDCF4 /* CollectionViewCell.swift in Sources */,
+				852561F728DC6C61004D337F /* ForecastCell.swift in Sources */,
+				8549313028DB9995000BDCF4 /* Cell.swift in Sources */,
 				8549311E28DB81AD000BDCF4 /* SceneDelegate.swift in Sources */,
-				8570B8BF28DBB06A0066AE0C /* DataCollectionViewCell.swift in Sources */,
-				852561F928DC78BA004D337F /* ForecastValueCollectionViewCell.swift in Sources */,
+				8570B8BF28DBB06A0066AE0C /* DataCell.swift in Sources */,
+				85C70DEE28DCA0EE00099EC5 /* MapCell.swift in Sources */,
+				852561F928DC78BA004D337F /* ForecastValueCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
