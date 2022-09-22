@@ -27,6 +27,8 @@ class MapCollectionViewCell: CollectionViewCell {
 
 		self.contentView.addSubview(self.mapView)
 		self.mapView.layer.cornerRadius = 15
+		self.imageView.image = UIImage(systemName: "map.fill")
+		self.title.text = "MAP"
 	}
 
 	required init?(coder: NSCoder) {
