@@ -28,7 +28,7 @@ class ForecastCollectionViewCell: CollectionViewCell {
 		collectionView.dataSource = self
 		collectionView.showsVerticalScrollIndicator = false
 		collectionView.showsHorizontalScrollIndicator = false
-		collectionView.backgroundColor = .systemGray6
+		collectionView.backgroundColor = nil
 
 		return collectionView
 	}()

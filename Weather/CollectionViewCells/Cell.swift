@@ -13,6 +13,19 @@ class CollectionViewCell: UICollectionViewCell {
 		return "CollectionViewCell"
 	}
 
+	private lazy var blurEffectView: UIVisualEffectView = {
+		let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+
+		let blurEffectView = UIVisualEffectView(effect: blurEffect)
+
+		blurEffectView.frame = contentView.bounds
+		blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		blurEffectView.layer.cornerRadius = 15
+		blurEffectView.clipsToBounds = true
+
+		return blurEffectView
+	}()
+
 	public lazy var title: UILabel = {
 		let label = UILabel(
 			frame: CGRect(
@@ -49,9 +62,8 @@ class CollectionViewCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		self.contentView.layer.cornerRadius = 15
-		self.contentView.backgroundColor = .systemGray6
-
+		self.contentView.backgroundColor = nil
+		self.contentView.addSubview(self.blurEffectView)
 		self.contentView.addSubview(self.imageView)
 		self.contentView.addSubview(self.title)
 	}

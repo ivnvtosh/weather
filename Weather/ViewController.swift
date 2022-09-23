@@ -11,6 +11,14 @@ class ViewController: UIViewController {
 
 
 
+	private lazy var imageView: UIImageView = {
+		let imageView = UIImageView()
+
+		imageView.image = UIImage(named: "iOS 15 dark")
+
+		return imageView
+	}()
+
 	private lazy var collectionView: UICollectionView = {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
@@ -34,6 +42,7 @@ class ViewController: UIViewController {
 		collectionView.dataSource = self
 		collectionView.showsVerticalScrollIndicator = false
 		collectionView.showsHorizontalScrollIndicator = false
+		collectionView.backgroundColor = nil
 
 		return collectionView
 	}()
@@ -43,6 +52,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		self.view.addSubview(self.imageView)
 		self.view.addSubview(self.collectionView)
 	}
 
@@ -50,6 +60,7 @@ class ViewController: UIViewController {
 		super.viewDidLayoutSubviews()
 		guard let frame = self.view.window?.windowScene?.screen.bounds else { return }
 
+		self.imageView.frame = frame
 		self.collectionView.frame = frame
 	}
 
@@ -95,7 +106,8 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let length = CGFloat.minimum(self.view.frame.size.width, self.view.frame.size.height) / 2 - 25
+		let size = self.view.frame.size
+		let length = CGFloat.minimum(size.width, size.height) / 2 - 25
 
 		switch indexPath.item {
 		case 2:
