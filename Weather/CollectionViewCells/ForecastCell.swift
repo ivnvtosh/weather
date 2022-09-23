@@ -36,6 +36,8 @@ class ForecastCollectionViewCell: CollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
+		self.title.text = "FORECAST"
+		self.imageView.image = UIImage(systemName: "sun.min.fill")
 		self.contentView.addSubview(self.collectionView)
 	}
 
