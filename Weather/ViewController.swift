@@ -11,12 +11,12 @@ class ViewController: UIViewController {
 
 	private let weatherService: WeatherService = YWService(key: Storage.key!)
 
-	var delegateData: DataCollectionViewCellDelegate?
+	var delegateTemperature: TemperatureCollectionViewCellDelegate?
 
 	public var weather: YWResponse? {
 		didSet {
 			DispatchQueue.main.async {
-				self.delegateData?.update(temperature: self.weather?.fact?.temperature)
+				self.delegateTemperature?.update(self.weather?.fact?.temperature)
 			}
 
 		}
@@ -40,6 +40,10 @@ class ViewController: UIViewController {
 		collectionView.register(
 			DataCollectionViewCell.self,
 			forCellWithReuseIdentifier: DataCollectionViewCell.identifier
+		)
+		collectionView.register(
+			TemperatureCollectionViewCell.self,
+			forCellWithReuseIdentifier: TemperatureCollectionViewCell.identifier
 		)
 		collectionView.register(
 			ForecastCollectionViewCell.self,
@@ -109,11 +113,11 @@ extension ViewController: UICollectionViewDataSource {
 		switch indexPath.item {
 		case 0:
 			let cell = collectionView.dequeueReusableCell(
-				withReuseIdentifier: DataCollectionViewCell.identifier,
+				withReuseIdentifier: TemperatureCollectionViewCell.identifier,
 				for: indexPath
-			) as! DataCollectionViewCell
+			) as! TemperatureCollectionViewCell
 
-			self.delegateData = cell
+			self.delegateTemperature = cell
 
 			return cell
 

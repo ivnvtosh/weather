@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DataCollectionViewCellDelegate {
-	func update(temperature: Int?)
+	func update(_ data: Int?)
 }
 
 class DataCollectionViewCell: CollectionViewCell {
@@ -59,12 +59,12 @@ class DataCollectionViewCell: CollectionViewCell {
 
 
 extension DataCollectionViewCell: DataCollectionViewCellDelegate {
-	func update(temperature: Int?) {
-		guard let temperature = temperature else {
+	func update(_ data: Int?) {
+		guard let data = data else {
 			return
 		}
 		
-		self.data.text = String(temperature) + "°"
+		self.data.text = String(data)
 	}
 }
 

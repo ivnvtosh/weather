@@ -55,6 +55,7 @@ class CollectionViewCell: UICollectionViewCell {
 
 		imageView.image = UIImage(systemName: "circle.fill")
 		imageView.tintColor = .systemGray
+		imageView.contentMode = .center
 
 		return imageView
 	}()
