@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CollectionViewCellDelegate {
+	func update(_ weather: YWResponse)
+}
+
 class CollectionViewCell: UICollectionViewCell {
 
 	class var identifier: String {
@@ -84,6 +88,15 @@ class CollectionViewCell: UICollectionViewCell {
 		self.imageView.image = UIImage(systemName: "circle.fill")
 	}
 
+	func update(_ weather: YWResponse) {
+
+	}
+
+
+}
+
+
+extension CollectionViewCell: CollectionViewCellDelegate {
 
 }
 

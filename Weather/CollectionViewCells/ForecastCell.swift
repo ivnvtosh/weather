@@ -62,6 +62,10 @@ class ForecastCollectionViewCell: CollectionViewCell {
 		super.prepareForReuse()
 	}
 
+	override func update(_ weather: YWResponse) {
+
+	}
+
 
 }
 

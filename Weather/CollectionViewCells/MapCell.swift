@@ -52,6 +52,10 @@ class MapCollectionViewCell: CollectionViewCell {
 		super.prepareForReuse()
 	}
 
+	override func update(_ weather: YWResponse) {
+
+	}
+
 
 }
 

@@ -11,14 +11,26 @@ class ViewController: UIViewController {
 
 	private let weatherService: WeatherService = YWService(key: Storage.key!)
 
-	var delegateTemperature: TemperatureCollectionViewCellDelegate?
+	private let cells = [
+		TemperatureCollectionViewCell.self,
+		WindCollectionViewCell.self,
+		ForecastCollectionViewCell.self,
+		MapCollectionViewCell.self,
+	]
 
-	public var weather: YWResponse? {
+	private var delegates = [CollectionViewCellDelegate]()
+
+	private var weather: YWResponse? {
 		didSet {
-			DispatchQueue.main.async {
-				self.delegateTemperature?.update(self.weather?.fact?.temperature)
+			guard let weather = weather else {
+				return
 			}
 
+			DispatchQueue.main.async {
+				for delegate in self.delegates {
+					delegate.update(weather)
+				}
+			}
 		}
 	}
 
@@ -33,26 +45,10 @@ class ViewController: UIViewController {
 	private lazy var collectionView: UICollectionView = {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-		collectionView.register(
-			CollectionViewCell.self,
-			forCellWithReuseIdentifier: CollectionViewCell.identifier
-		)
-		collectionView.register(
-			DataCollectionViewCell.self,
-			forCellWithReuseIdentifier: DataCollectionViewCell.identifier
-		)
-		collectionView.register(
-			TemperatureCollectionViewCell.self,
-			forCellWithReuseIdentifier: TemperatureCollectionViewCell.identifier
-		)
-		collectionView.register(
-			ForecastCollectionViewCell.self,
-			forCellWithReuseIdentifier: ForecastCollectionViewCell.identifier
-		)
-		collectionView.register(
-			MapCollectionViewCell.self,
-			forCellWithReuseIdentifier: MapCollectionViewCell.identifier
-		)
+		for cell in self.cells {
+			collectionView.register(cell, forCellWithReuseIdentifier: cell.identifier)
+		}
+
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.showsVerticalScrollIndicator = false
@@ -106,62 +102,36 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		return cells.count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		switch indexPath.item {
-		case 0:
-			let cell = collectionView.dequeueReusableCell(
-				withReuseIdentifier: TemperatureCollectionViewCell.identifier,
-				for: indexPath
-			) as! TemperatureCollectionViewCell
+		let identifier = cells[indexPath.item].identifier
 
-			self.delegateTemperature = cell
+		let cell = collectionView.dequeueReusableCell(
+			withReuseIdentifier: identifier,
+			for: indexPath
+		) as! CollectionViewCell
 
-			return cell
+		self.delegates.append(cell)
 
-		case 2:
-			let cell = collectionView.dequeueReusableCell(
-				withReuseIdentifier: ForecastCollectionViewCell.identifier,
-				for: indexPath
-			) as! ForecastCollectionViewCell
-
-			return cell
-
-		case 5:
-			let cell = collectionView.dequeueReusableCell(
-				withReuseIdentifier: MapCollectionViewCell.identifier,
-				for: indexPath
-			) as! MapCollectionViewCell
-
-			return cell
-
-		default:
-			let cell = collectionView.dequeueReusableCell(
-				withReuseIdentifier: CollectionViewCell.identifier,
-				for: indexPath
-			) as! CollectionViewCell
-
-			return cell
-
-		}
+		return cell
 	}
-
-
 }
 
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let size = self.view.frame.size
-		let length = CGFloat.minimum(size.width, size.height) / 2 - 25
+		let identifier = cells[indexPath.item].identifier
 
-		switch indexPath.item {
-		case 2:
+		let frame = self.view.frame
+		let length = CGFloat.minimum(frame.width, frame.height) / 2 - 25
+
+		switch identifier {
+		case "ForecastCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length)
-		case 5:
+		case "MapCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length * 2 + 10)
 		default:
 			return CGSize(width: length, height: length)
@@ -171,8 +141,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 		return UIEdgeInsets(top: 0, left: 20, bottom: 10, right: 20)
 	}
-
-
 }
 
 
