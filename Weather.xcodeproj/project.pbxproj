@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		85157D4D28DF3601008FA6AC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85157D4C28DF3601008FA6AC /* Storage.swift */; };
 		852561F728DC6C61004D337F /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852561F628DC6C61004D337F /* ForecastCell.swift */; };
 		852561F928DC78BA004D337F /* ForecastValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852561F828DC78BA004D337F /* ForecastValueCell.swift */; };
 		8549311C28DB81AD000BDCF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8549311B28DB81AD000BDCF4 /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		85157D4C28DF3601008FA6AC /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		852561F628DC6C61004D337F /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
 		852561F828DC78BA004D337F /* ForecastValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastValueCell.swift; sourceTree = "<group>"; };
 		8549311828DB81AD000BDCF4 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 		8549311A28DB81AD000BDCF4 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				85157D4C28DF3601008FA6AC /* Storage.swift */,
 				8549311B28DB81AD000BDCF4 /* AppDelegate.swift */,
 				8549311D28DB81AD000BDCF4 /* SceneDelegate.swift */,
 				8549311F28DB81AD000BDCF4 /* ViewController.swift */,
@@ -299,6 +302,7 @@
 				85913B5928DE133400FF0A09 /* Condition.swift in Sources */,
 				8593B05728DE601B00FE9724 /* Day.swift in Sources */,
 				8549311C28DB81AD000BDCF4 /* AppDelegate.swift in Sources */,
+				85157D4D28DF3601008FA6AC /* Storage.swift in Sources */,
 				85913B5A28DE133400FF0A09 /* Info.swift in Sources */,
 				852561F728DC6C61004D337F /* ForecastCell.swift in Sources */,
 				8593B05128DE5F6500FE9724 /* Biomet.swift in Sources */,

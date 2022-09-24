@@ -10,18 +10,16 @@ import XCTest
 
 final class YandexWeatherTests: XCTestCase {
 
-	let key = ""
-
 	var weatherService: WeatherService!
 
     override func setUpWithError() throws {
 		try super.setUpWithError()
 
-		if self.key.isEmpty == true {
-			throw XCTSkip("Enter the key")
+		guard let key = Storage.key else {
+			throw XCTSkip("Enter key from: https://developer.tech.yandex.ru/services/18")
 		}
 
-		self.weatherService = YWService(key: self.key)
+		self.weatherService = YWService(key: key)
     }
 
     override func tearDownWithError() throws {
@@ -37,23 +35,21 @@ final class YandexWeatherTests: XCTestCase {
 		let request = YWRequest(55.75396, 37.620393)
 		request.extra = true
 
-		measure {
-			self.weatherService.weather(with: request) { response, error in
-				promise.fulfill()
+		self.weatherService.weather(with: request) { response, error in
+			promise.fulfill()
 
-				if let error = error {
-					XCTFail("Error: \(error)")
-					return
-				}
+			if let error = error {
+				XCTFail("Error: \(error)")
+				return
+			}
 
-				guard let response = response else {
-					XCTFail("Error")
-					return
-				}
+			guard let response = response else {
+				XCTFail("Error")
+				return
+			}
 
-				if response.now == nil {
-					XCTFail("Error")
-				}
+			if response.now == nil {
+				XCTFail("Error")
 			}
 		}
 
