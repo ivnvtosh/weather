@@ -9,7 +9,18 @@ import UIKit
 
 class ViewController: UIViewController {
 
+	private let weatherService: WeatherService = YWService(key: Storage.key!)
 
+	var delegateData: DataCollectionViewCellDelegate?
+
+	public var weather: YWResponse? {
+		didSet {
+			DispatchQueue.main.async {
+				self.delegateData?.update(temperature: self.weather?.fact?.temperature)
+			}
+
+		}
+	}
 
 	private lazy var imageView: UIImageView = {
 		let imageView = UIImageView()
@@ -47,6 +58,24 @@ class ViewController: UIViewController {
 		return collectionView
 	}()
 
+	private func updateWeather() {
+		let request = YWRequest(55.75396, 37.620393)
+		request.extra = true
+
+		self.weatherService.weather(with: request) { [weak self] response, error in
+			if let error = error {
+				print(error)
+				return
+			}
+
+			guard let response = response else {
+				return
+			}
+
+			self?.weather = response
+		}
+	}
+
 	// MARK: UIViewController Lifecycle
 
 	override func viewDidLoad() {
@@ -54,6 +83,8 @@ class ViewController: UIViewController {
 
 		self.view.addSubview(self.imageView)
 		self.view.addSubview(self.collectionView)
+
+		updateWeather()
 	}
 
 	override func viewDidLayoutSubviews() {
@@ -76,26 +107,40 @@ extension ViewController: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		switch indexPath.item {
-		case 1:
-			return collectionView.dequeueReusableCell(
-				withReuseIdentifier: CollectionViewCell.identifier,
-				for: indexPath
-			) as! CollectionViewCell
-		case 2:
-			return collectionView.dequeueReusableCell(
-				withReuseIdentifier: ForecastCollectionViewCell.identifier,
-				for: indexPath
-			) as! ForecastCollectionViewCell
-		case 5:
-			return collectionView.dequeueReusableCell(
-				withReuseIdentifier: MapCollectionViewCell.identifier,
-				for: indexPath
-			) as! MapCollectionViewCell
-		default:
-			return collectionView.dequeueReusableCell(
+		case 0:
+			let cell = collectionView.dequeueReusableCell(
 				withReuseIdentifier: DataCollectionViewCell.identifier,
 				for: indexPath
 			) as! DataCollectionViewCell
+
+			self.delegateData = cell
+
+			return cell
+
+		case 2:
+			let cell = collectionView.dequeueReusableCell(
+				withReuseIdentifier: ForecastCollectionViewCell.identifier,
+				for: indexPath
+			) as! ForecastCollectionViewCell
+
+			return cell
+
+		case 5:
+			let cell = collectionView.dequeueReusableCell(
+				withReuseIdentifier: MapCollectionViewCell.identifier,
+				for: indexPath
+			) as! MapCollectionViewCell
+
+			return cell
+
+		default:
+			let cell = collectionView.dequeueReusableCell(
+				withReuseIdentifier: CollectionViewCell.identifier,
+				for: indexPath
+			) as! CollectionViewCell
+
+			return cell
+
 		}
 	}
 

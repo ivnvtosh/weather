@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DataCollectionViewCellDelegate {
+	func update(temperature: Int?)
+}
+
 class DataCollectionViewCell: CollectionViewCell {
 
 	class override var identifier: String {
@@ -51,5 +55,16 @@ class DataCollectionViewCell: CollectionViewCell {
 	}
 
 
+}
+
+
+extension DataCollectionViewCell: DataCollectionViewCellDelegate {
+	func update(temperature: Int?) {
+		guard let temperature = temperature else {
+			return
+		}
+		
+		self.data.text = String(temperature) + "°"
+	}
 }
 
