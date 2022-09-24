@@ -1,5 +1,5 @@
 //
-//  ForecastCollectionViewCell.swift
+//  ForecastCell.swift
 //  Weather
 //
 //  Created by Anton Ivanov on 22.09.2022.

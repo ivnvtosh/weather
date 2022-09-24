@@ -1,5 +1,5 @@
 //
-//  DataCollectionViewCell.swift
+//  DataCell.swift
 //  Weather
 //
 //  Created by Anton Ivanov on 21.09.2022.
