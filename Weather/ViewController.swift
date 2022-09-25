@@ -12,6 +12,7 @@ class ViewController: UIViewController {
 	private let weatherService: WeatherService = YWService(key: Storage.key!)
 
 	private let cells = [
+		CityCollectionViewCell.self,
 		TemperatureCollectionViewCell.self,
 		WindCollectionViewCell.self,
 		ForecastCollectionViewCell.self,
@@ -129,7 +130,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 		let length = CGFloat.minimum(frame.width, frame.height) / 2 - 25
 
 		switch identifier {
-		case "ForecastCollectionViewCell":
+		case "CityCollectionViewCell", "ForecastCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length)
 		case "MapCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length * 2 + 10)

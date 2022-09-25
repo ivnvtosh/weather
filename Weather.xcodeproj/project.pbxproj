@@ -39,6 +39,7 @@
 		8593B05D28DE606E00FE9724 /* GeoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593B05C28DE606E00FE9724 /* GeoObject.swift */; };
 		8593B05F28DE607A00FE9724 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593B05E28DE607A00FE9724 /* Country.swift */; };
 		8593B06128DE60B100FE9724 /* AccumPrec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593B06028DE60B100FE9724 /* AccumPrec.swift */; };
+		85AE847F28E07FC800AD6626 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AE847E28E07FC800AD6626 /* CityCell.swift */; };
 		85C70DEE28DCA0EE00099EC5 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C70DED28DCA0EE00099EC5 /* MapCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		8593B05C28DE606E00FE9724 /* GeoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoObject.swift; sourceTree = "<group>"; };
 		8593B05E28DE607A00FE9724 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		8593B06028DE60B100FE9724 /* AccumPrec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccumPrec.swift; sourceTree = "<group>"; };
+		85AE847E28E07FC800AD6626 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		85C70DED28DCA0EE00099EC5 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				8549312F28DB9995000BDCF4 /* Cell.swift */,
+				85AE847E28E07FC800AD6626 /* CityCell.swift */,
 				855AA75F28DFB58200883D47 /* TemperatureCell.swift */,
 				855AA76328DFB82A00883D47 /* WindCell.swift */,
 				852561F628DC6C61004D337F /* ForecastCell.swift */,
@@ -302,6 +305,7 @@
 			files = (
 				8593B05F28DE607A00FE9724 /* Country.swift in Sources */,
 				855AA76428DFB82A00883D47 /* WindCell.swift in Sources */,
+				85AE847F28E07FC800AD6626 /* CityCell.swift in Sources */,
 				8549312028DB81AD000BDCF4 /* ViewController.swift in Sources */,
 				85913B5928DE133400FF0A09 /* Condition.swift in Sources */,
 				8593B05728DE601B00FE9724 /* Day.swift in Sources */,
