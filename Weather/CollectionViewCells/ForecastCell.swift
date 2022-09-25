@@ -13,6 +13,8 @@ class ForecastCollectionViewCell: CollectionViewCell {
 		return "ForecastCollectionViewCell"
 	}
 
+	private var hours = Hours()
+
 	lazy var collectionView: UICollectionView = {
 		let layout = UICollectionViewFlowLayout()
 
@@ -63,7 +65,12 @@ class ForecastCollectionViewCell: CollectionViewCell {
 	}
 
 	override func update(_ weather: YWResponse) {
+		guard let hours = weather.forecasts?[0].hours else {
+			return
+		}
 
+		self.hours = hours
+		self.collectionView.reloadData()
 	}
 
 
@@ -73,14 +80,35 @@ class ForecastCollectionViewCell: CollectionViewCell {
 extension ForecastCollectionViewCell: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		return hours.count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell =  collectionView.dequeueReusableCell(
+		let cell = collectionView.dequeueReusableCell(
 			withReuseIdentifier: ForecastValueCollectionViewCell.identifier,
 			for: indexPath
 		) as! ForecastValueCollectionViewCell
+
+		if let hour = hours[indexPath.item].hour {
+			cell.hour.text = hour
+		}
+
+//		if let icon = hours[indexPath.item].icon {
+//			let url = URL(string: "https://yastatic.net/weather/i/icons/funky/dark/\(icon).svg")!
+//
+//			DispatchQueue.global().async {
+//				if let data = try? Data(contentsOf: url) {
+//					let image = UIImage(data: data)
+//					DispatchQueue.main.async {
+//						cell.imageView.image = image
+//					}
+//				}
+//			}
+//		}
+
+		if let temperature = hours[indexPath.item].temperature {
+			cell.temperature.text = String(temperature) + "°"
+		}
 
 		return cell
 	}
@@ -92,7 +120,7 @@ extension ForecastCollectionViewCell: UICollectionViewDataSource {
 extension ForecastCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		let numberOfCells = 4
+		let numberOfCells = 6
 		let width = (self.collectionView.frame.width - CGFloat(numberOfCells - 1) * 10) / CGFloat(numberOfCells)
 		let height = self.collectionView.frame.height
 

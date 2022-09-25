@@ -70,7 +70,7 @@ class ForecastValueCollectionViewCell: UICollectionViewCell {
 		super.init(frame: frame)
 
 		self.contentView.layer.cornerRadius = 15
-		self.contentView.backgroundColor = .systemGray5
+		self.contentView.backgroundColor = nil
 
 		self.contentView.addSubview(self.hour)
 		self.contentView.addSubview(self.imageView)
