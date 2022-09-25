@@ -16,6 +16,7 @@ class ViewController: UIViewController {
 		TemperatureCollectionViewCell.self,
 		WindCollectionViewCell.self,
 		ForecastCollectionViewCell.self,
+		ForecastWeekCollectionViewCell.self,
 		MapCollectionViewCell.self,
 	]
 
@@ -132,7 +133,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 		switch identifier {
 		case "CityCollectionViewCell", "ForecastCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length)
-		case "MapCollectionViewCell":
+		case "ForecastWeekCollectionViewCell", "MapCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length * 2 + 10)
 		default:
 			return CGSize(width: length, height: length)

@@ -40,6 +40,8 @@
 		8593B05F28DE607A00FE9724 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593B05E28DE607A00FE9724 /* Country.swift */; };
 		8593B06128DE60B100FE9724 /* AccumPrec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8593B06028DE60B100FE9724 /* AccumPrec.swift */; };
 		85AE847F28E07FC800AD6626 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AE847E28E07FC800AD6626 /* CityCell.swift */; };
+		85AE848128E08DE400AD6626 /* ForecastWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AE848028E08DE400AD6626 /* ForecastWeekCell.swift */; };
+		85AE848328E094AE00AD6626 /* ForecastWeekValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AE848228E094AE00AD6626 /* ForecastWeekValueCell.swift */; };
 		85C70DEE28DCA0EE00099EC5 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C70DED28DCA0EE00099EC5 /* MapCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +92,8 @@
 		8593B05E28DE607A00FE9724 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		8593B06028DE60B100FE9724 /* AccumPrec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccumPrec.swift; sourceTree = "<group>"; };
 		85AE847E28E07FC800AD6626 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		85AE848028E08DE400AD6626 /* ForecastWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeekCell.swift; sourceTree = "<group>"; };
+		85AE848228E094AE00AD6626 /* ForecastWeekValueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeekValueCell.swift; sourceTree = "<group>"; };
 		85C70DED28DCA0EE00099EC5 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +201,8 @@
 				855AA76328DFB82A00883D47 /* WindCell.swift */,
 				852561F628DC6C61004D337F /* ForecastCell.swift */,
 				852561F828DC78BA004D337F /* ForecastValueCell.swift */,
+				85AE848028E08DE400AD6626 /* ForecastWeekCell.swift */,
+				85AE848228E094AE00AD6626 /* ForecastWeekValueCell.swift */,
 				85C70DED28DCA0EE00099EC5 /* MapCell.swift */,
 			);
 			path = CollectionViewCells;
@@ -322,8 +328,10 @@
 				85913B5B28DE133400FF0A09 /* Response.swift in Sources */,
 				85913B5C28DE133400FF0A09 /* WindDirection.swift in Sources */,
 				8549311E28DB81AD000BDCF4 /* SceneDelegate.swift in Sources */,
+				85AE848128E08DE400AD6626 /* ForecastWeekCell.swift in Sources */,
 				85913B5F28DE133400FF0A09 /* Season.swift in Sources */,
 				85913B5628DE133400FF0A09 /* Service.swift in Sources */,
+				85AE848328E094AE00AD6626 /* ForecastWeekValueCell.swift in Sources */,
 				8593B05928DE603700FE9724 /* Yesterday.swift in Sources */,
 				855AA76028DFB58200883D47 /* TemperatureCell.swift in Sources */,
 				85913B5728DE133400FF0A09 /* Request.swift in Sources */,
