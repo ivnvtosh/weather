@@ -13,17 +13,17 @@ class TemperatureCollectionViewCell: CollectionViewCell {
 		return "TemperatureCollectionViewCell"
 	}
 
-	public lazy var temperature: UILabel = {
-		let label = UILabel(
-			frame: CGRect(
-				x: 15,
-				y: 45,
-				width: self.contentView.frame.width - 30,
-				height: 60
-			)
-		)
+	override var weather: YWResponse?  {
+		didSet {
+			if let temperature = weather?.fact?.temperature {
+				self.temperature.text = String(temperature) + "°"
+			}
+		}
+	}
 
-		label.text = "--"
+	public lazy var temperature: UILabel = {
+		let label = UILabel()
+
 		label.font = UIFont.systemFont(ofSize: 60)
 		label.textColor = .white
 
@@ -32,9 +32,6 @@ class TemperatureCollectionViewCell: CollectionViewCell {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-
-		self.title.text = "TEMPERATURE"
-		self.imageView.image = UIImage(systemName: "thermometer")
 
 		self.contentView.addSubview(self.temperature)
 	}
@@ -45,20 +42,24 @@ class TemperatureCollectionViewCell: CollectionViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		self.title.text = "TEMPERATURE"
+		self.imageView.image = UIImage(systemName: "thermometer")
+
+		let frame = self.contentView.frame
+
+		self.temperature.frame = CGRect(
+			x: 15,
+			y: 45,
+			width: frame.width - 30,
+			height: 60
+		)
 	}
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
-		self.temperature.text = "--"
-	}
-
-	override func update(_ weather: YWResponse) {
-		guard let temperature = weather.fact?.temperature else {
-			return
-		}
-
-		self.temperature.text = String(temperature) + "°"
+		self.temperature.text = ""
 	}
 
 

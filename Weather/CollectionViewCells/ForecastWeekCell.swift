@@ -13,6 +13,14 @@ class ForecastWeekCollectionViewCell: CollectionViewCell {
 		return "ForecastWeekCollectionViewCell"
 	}
 
+	override var weather: YWResponse?  {
+		didSet {
+			guard let forecasts = weather?.forecasts else { return }
+			self.forecasts = forecasts
+			self.tableView.reloadData()
+		}
+	}
+
 	private var forecasts = Forecasts()
 
 	public lazy var tableView: UITableView = {
@@ -44,9 +52,6 @@ class ForecastWeekCollectionViewCell: CollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		self.title.text = "FORECAST WEAK"
-		self.imageView.image = UIImage(systemName: "sun.max.fill")
-
 		self.contentView.addSubview(self.tableView)
 	}
 
@@ -56,19 +61,13 @@ class ForecastWeekCollectionViewCell: CollectionViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		self.title.text = "FORECAST WEAK"
+		self.imageView.image = UIImage(systemName: "sun.max.fill")
 	}
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
-	}
-
-	override func update(_ weather: YWResponse) {
-		guard let forecasts = weather.forecasts else {
-			return
-		}
-
-		self.forecasts = forecasts
-		self.tableView.reloadData()
 	}
 
 
@@ -80,6 +79,8 @@ extension ForecastWeekCollectionViewCell: UITableViewDataSource {
 			withIdentifier: ForecastWeekValueTableViewCell.identifier,
 			for: indexPath
 		) as! ForecastWeekValueTableViewCell
+
+		cell.selectionStyle = .none
 
 		let forecast = self.forecasts[indexPath.row]
 

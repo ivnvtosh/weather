@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 		MapCollectionViewCell.self,
 	]
 
-	private var delegates = [CollectionViewCellDelegate]()
+	private var delegates = [String : CollectionViewCellDelegate]()
 
 	private var weather: YWResponse? {
 		didSet {
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
 			}
 
 			DispatchQueue.main.async {
-				for delegate in self.delegates {
+				for (_, delegate) in self.delegates {
 					delegate.update(weather)
 				}
 			}
@@ -115,7 +115,9 @@ extension ViewController: UICollectionViewDataSource {
 			for: indexPath
 		) as! CollectionViewCell
 
-		self.delegates.append(cell)
+		cell.weather = weather
+
+		self.delegates[identifier] = cell
 
 		return cell
 	}

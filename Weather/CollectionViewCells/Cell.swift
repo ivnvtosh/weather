@@ -17,6 +17,8 @@ class CollectionViewCell: UICollectionViewCell {
 		return "CollectionViewCell"
 	}
 
+	public var weather: YWResponse?
+
 	private lazy var blurEffectView: UIVisualEffectView = {
 		let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
 
@@ -67,7 +69,7 @@ class CollectionViewCell: UICollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		self.contentView.backgroundColor = nil
+		self.contentView.backgroundColor = .clear
 		self.contentView.addSubview(self.blurEffectView)
 		self.contentView.addSubview(self.imageView)
 		self.contentView.addSubview(self.title)
@@ -84,12 +86,12 @@ class CollectionViewCell: UICollectionViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
-		self.title.text = "--"
+		self.title.text = ""
 		self.imageView.image = UIImage(systemName: "circle.fill")
 	}
 
 	func update(_ weather: YWResponse) {
-
+		self.weather = weather
 	}
 
 

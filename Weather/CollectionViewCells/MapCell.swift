@@ -14,10 +14,32 @@ class MapCollectionViewCell: CollectionViewCell {
 		return "MapCollectionViewCell"
 	}
 
+	override var weather: YWResponse?  {
+		didSet {
+			guard let latitude = weather?.info?.latitude,
+				  let longitude = weather?.info?.longitude else { return }
+
+			let region = MKCoordinateRegion(
+				center: CLLocationCoordinate2D(
+					latitude: latitude,
+					longitude: longitude
+				),
+				latitudinalMeters: 10000,
+				longitudinalMeters: 10000
+			)
+
+			self.mapView.setRegion(region, animated: true)
+		}
+	}
+
 	private lazy var mapView: MKMapView = {
 		let mapView = MKMapView()
 
+		mapView.layer.cornerRadius = 15
 		mapView.isScrollEnabled = false
+		mapView.isZoomEnabled = false
+		mapView.isPitchEnabled = false
+		mapView.isRotateEnabled = false
 
 		return mapView
 	}()
@@ -26,9 +48,6 @@ class MapCollectionViewCell: CollectionViewCell {
 		super.init(frame: frame)
 
 		self.contentView.addSubview(self.mapView)
-		self.mapView.layer.cornerRadius = 15
-		self.imageView.image = UIImage(systemName: "map.fill")
-		self.title.text = "MAP"
 	}
 
 	required init?(coder: NSCoder) {
@@ -37,6 +56,9 @@ class MapCollectionViewCell: CollectionViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		self.title.text = "MAP"
+		self.imageView.image = UIImage(systemName: "map.fill")
 
 		let frame = self.contentView.frame
 
@@ -50,10 +72,6 @@ class MapCollectionViewCell: CollectionViewCell {
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
-	}
-
-	override func update(_ weather: YWResponse) {
-
 	}
 
 

@@ -68,8 +68,8 @@ class ForecastWeekValueTableViewCell: UITableViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
-		self.day.text = "--"
-		self.temperature.text = "--"
+		self.day.text = ""
+		self.temperature.text = ""
 	}
 
 

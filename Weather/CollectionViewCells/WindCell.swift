@@ -13,6 +13,24 @@ class WindCollectionViewCell: CollectionViewCell {
 		return "WindCollectionViewCell"
 	}
 
+	override var weather: YWResponse?  {
+		didSet {
+			guard let fact = weather?.fact else { return }
+
+			if let windSpeed = fact.windSpeed {
+				self.speed.text = String(windSpeed) + " m/s"
+			}
+
+			if let windDirection = fact.windDirection {
+				self.direction.image = windDirection.image
+			}
+
+//			if let windGust = fact.windGust {
+//				self. = String(windGust)
+//			}
+		}
+	}
+
 	public lazy var speed: UILabel = {
 		let label = UILabel(
 			frame: CGRect(
@@ -23,7 +41,6 @@ class WindCollectionViewCell: CollectionViewCell {
 			)
 		)
 
-		label.text = "--"
 		label.font = UIFont.systemFont(ofSize: 40)
 		label.textColor = .white
 
@@ -51,9 +68,6 @@ class WindCollectionViewCell: CollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		self.title.text = "WIND"
-		self.imageView.image = UIImage(systemName: "wind")
-
 		self.contentView.addSubview(self.speed)
 		self.contentView.addSubview(self.direction)
 	}
@@ -64,56 +78,44 @@ class WindCollectionViewCell: CollectionViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		self.title.text = "WIND"
+		self.imageView.image = UIImage(systemName: "wind")
 	}
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
-		self.speed.text = "--"
+		self.speed.text = ""
+		self.direction.image = nil
 	}
 
-	override func update(_ weather: YWResponse) {
-		guard let fact = weather.fact else {
-			return
-		}
 
-		guard let windSpeed = fact.windSpeed else {
-			return
-		}
+}
 
-		guard let windDirection = fact.windDirection else {
-			return
-		}
 
-//		guard let windGust = fact.windGust else {
-//			return
-//		}
-
-		self.speed.text = String(windSpeed) + " m/s"
-
-		switch windDirection {
+extension WindDirection {
+	var image: UIImage? {
+		switch self {
 		case .north:
-			self.direction.image = UIImage(systemName: "arrow.up.circle")
+			return UIImage(systemName: "arrow.up.circle")
 		case .northeast:
-			self.direction.image = UIImage(systemName: "arrow.upright.circle")
+			return UIImage(systemName: "arrow.upright.circle")
 		case .east:
-			self.direction.image = UIImage(systemName: "arrow.right.circle")
+			return UIImage(systemName: "arrow.right.circle")
 		case .southeast:
-			self.direction.image = UIImage(systemName: "arrow.down.right.circle")
+			return UIImage(systemName: "arrow.down.right.circle")
 		case .south:
-			self.direction.image = UIImage(systemName: "arrow.down.circle")
+			return UIImage(systemName: "arrow.down.circle")
 		case .southwest:
-			self.direction.image = UIImage(systemName: "arrow.down.left.circle")
+			return UIImage(systemName: "arrow.down.left.circle")
 		case .west:
-			self.direction.image = UIImage(systemName: "arrow.left.circle")
+			return UIImage(systemName: "arrow.left.circle")
 		case .northwest:
-			self.direction.image = UIImage(systemName: "arrow.up.left.circle")
+			return UIImage(systemName: "arrow.up.left.circle")
 		case .calm:
-			self.direction.image = UIImage(systemName: "record.circle")
+			return UIImage(systemName: "record.circle")
 		}
-
 	}
-
-
 }
 

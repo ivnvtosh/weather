@@ -14,6 +14,40 @@ class CityCollectionViewCell: CollectionViewCell {
 		return "CityCollectionViewCell"
 	}
 
+	override var weather: YWResponse?  {
+		didSet {
+			guard let weather = weather else {
+				return
+			}
+
+			guard let latitude = weather.info?.latitude,
+				  let longitude = weather.info?.longitude else {
+				return
+			}
+
+			let geoCoder = CLGeocoder()
+			let location = CLLocation(latitude: latitude, longitude: longitude)
+
+			geoCoder.reverseGeocodeLocation(
+					location,
+					completionHandler: { [weak self] (placemarks, error) -> Void in
+						if let error = error {
+							print(error)
+							return
+						}
+
+						guard let placeMark = placemarks?.first else {
+							return
+						}
+
+						DispatchQueue.main.async {
+							self?.city.text = placeMark.locality
+						}
+				}
+			)
+		}
+	}
+
 	public lazy var city: UILabel = {
 		let label = UILabel(
 			frame: CGRect(
@@ -24,7 +58,6 @@ class CityCollectionViewCell: CollectionViewCell {
 			)
 		)
 
-		label.text = "--"
 		label.font = UIFont.systemFont(ofSize: 60)
 		label.textColor = .white
 		label.textAlignment = .center
@@ -35,9 +68,6 @@ class CityCollectionViewCell: CollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		self.title.text = "CITY"
-		self.imageView.image = UIImage(systemName: "person.fill")
-
 		self.contentView.addSubview(self.city)
 	}
 
@@ -47,40 +77,15 @@ class CityCollectionViewCell: CollectionViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		self.title.text = "CITY"
+		self.imageView.image = UIImage(systemName: "person.fill")
 	}
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
 
-		self.city.text = "--"
-	}
-
-	override func update(_ weather: YWResponse) {
-		guard let latitude = weather.info?.latitude,
-			  let longitude = weather.info?.longitude else {
-			return
-		}
-
-		let geoCoder = CLGeocoder()
-		let location = CLLocation(latitude: latitude, longitude: longitude)
-
-		geoCoder.reverseGeocodeLocation(
-				location,
-				completionHandler: { [weak self] (placemarks, error) -> Void in
-					if let error = error {
-						print(error)
-						return
-					}
-
-					guard let placeMark = placemarks?.first else {
-						return
-					}
-
-					DispatchQueue.main.async {
-						self?.city.text = placeMark.locality
-					}
-			}
-		)
+		self.city.text = ""
 	}
 
 

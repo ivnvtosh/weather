@@ -13,6 +13,14 @@ class ForecastCollectionViewCell: CollectionViewCell {
 		return "ForecastCollectionViewCell"
 	}
 
+	override var weather: YWResponse?  {
+		didSet {
+			guard let hours = weather?.forecasts?[0].hours else { return }
+			self.hours = hours
+			self.collectionView.reloadData()
+		}
+	}
+
 	private var hours = Hours()
 
 	lazy var collectionView: UICollectionView = {
@@ -26,6 +34,7 @@ class ForecastCollectionViewCell: CollectionViewCell {
 			ForecastValueCollectionViewCell.self,
 			forCellWithReuseIdentifier: ForecastValueCollectionViewCell.identifier
 		)
+
 		collectionView.delegate = self
 		collectionView.dataSource = self
 		collectionView.showsVerticalScrollIndicator = false
@@ -38,8 +47,6 @@ class ForecastCollectionViewCell: CollectionViewCell {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		self.title.text = "FORECAST"
-		self.imageView.image = UIImage(systemName: "sun.min.fill")
 		self.contentView.addSubview(self.collectionView)
 	}
 
@@ -49,6 +56,9 @@ class ForecastCollectionViewCell: CollectionViewCell {
 
 	override func layoutSubviews() {
 		super.layoutSubviews()
+
+		self.title.text = "FORECAST"
+		self.imageView.image = UIImage(systemName: "sun.min.fill")
 
 		let frame = self.contentView.frame
 
@@ -62,15 +72,6 @@ class ForecastCollectionViewCell: CollectionViewCell {
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
-	}
-
-	override func update(_ weather: YWResponse) {
-		guard let hours = weather.forecasts?[0].hours else {
-			return
-		}
-
-		self.hours = hours
-		self.collectionView.reloadData()
 	}
 
 
