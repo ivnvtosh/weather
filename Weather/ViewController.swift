@@ -7,11 +7,19 @@
 
 import UIKit
 
+protocol ViewControllerDelegate: AnyObject {
+	func update(key: String)
+}
+
 class ViewController: UIViewController {
 
-	private let weatherService: WeatherService = YWService(key: Storage.key!)
+	private var weatherService: WeatherService? {
+		didSet {
+			updateWeather()
+		}
+	}
 
-	private let cells = [
+	private var cells = [
 		CityCollectionViewCell.self,
 		TemperatureCollectionViewCell.self,
 		WindCollectionViewCell.self,
@@ -21,6 +29,13 @@ class ViewController: UIViewController {
 	]
 
 	private var delegates = [String : CollectionViewCellDelegate]()
+
+	private var key: String? {
+		didSet {
+			guard let key = key else { return }
+			self.weatherService = YWService(key: key)
+		}
+	}
 
 	private var weather: YWResponse? {
 		didSet {
@@ -64,7 +79,7 @@ class ViewController: UIViewController {
 		let request = YWRequest(55.75396, 37.620393)
 		request.extra = true
 
-		self.weatherService.weather(with: request) { [weak self] response, error in
+		self.weatherService?.weather(with: request) { [weak self] response, error in
 			if let error = error {
 				print(error)
 				return
@@ -86,7 +101,14 @@ class ViewController: UIViewController {
 		self.view.addSubview(self.imageView)
 		self.view.addSubview(self.collectionView)
 
-		updateWeather()
+		if let key = Storage.key {
+			self.key = key
+		} else {
+			let cell = KeyCollectionViewCell.self
+			collectionView.register(cell, forCellWithReuseIdentifier: cell.identifier)
+			self.cells.insert(cell, at: 0)
+			collectionView.reloadData()
+		}
 	}
 
 	override func viewDidLayoutSubviews() {
@@ -119,6 +141,11 @@ extension ViewController: UICollectionViewDataSource {
 
 		self.delegates[identifier] = cell
 
+		if identifier == "KeyCollectionViewCell" {
+			let cell = cell as! KeyCollectionViewCell
+			cell.delegate = self
+		}
+
 		return cell
 	}
 }
@@ -133,7 +160,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 		let length = CGFloat.minimum(frame.width, frame.height) / 2 - 25
 
 		switch identifier {
-		case "CityCollectionViewCell", "ForecastCollectionViewCell":
+		case "KeyCollectionViewCell", "CityCollectionViewCell", "ForecastCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length)
 		case "ForecastWeekCollectionViewCell", "MapCollectionViewCell":
 			return CGSize(width: length * 2 + 10, height: length * 2 + 10)
@@ -150,5 +177,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
 extension ViewController: UICollectionViewDelegate {
 
+}
+
+
+extension ViewController: ViewControllerDelegate {
+	func update(key: String) {
+		Storage.key = key
+
+		self.key = key
+		self.cells.removeFirst()
+
+		let indexPath = IndexPath(item: 0, section: 0)
+		DispatchQueue.main.async {
+			self.collectionView.deleteItems(at: [indexPath])
+		}
+	}
 }
 
