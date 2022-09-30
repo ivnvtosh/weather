@@ -31,7 +31,7 @@ class KeyCollectionViewCell: CollectionViewCell {
 			)
 		)
 
-		textField.placeholder = "Enter a key"
+		textField.placeholder = "Enter a key".localized()
 		textField.adjustsFontSizeToFitWidth = true
 		textField.minimumFontSize = 10
 		textField.delegate = self
@@ -57,7 +57,7 @@ class KeyCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "KEY"
+		self.title.text = "KEY".localized()
 		self.imageView.image = UIImage(systemName: "key.fill")
 	}
 

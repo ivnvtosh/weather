@@ -78,7 +78,7 @@ class CityCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "CITY"
+		self.title.text = "CITY".localized()
 		self.imageView.image = UIImage(systemName: "person.fill")
 	}
 

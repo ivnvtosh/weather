@@ -57,7 +57,7 @@ class MapCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "MAP"
+		self.title.text = "MAP".localized()
 		self.imageView.image = UIImage(systemName: "map.fill")
 
 		let frame = self.contentView.frame

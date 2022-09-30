@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  Weather
+
+  Created by Anton Ivanov on 30.09.2022.
+  
+*/
+
+// KeyCell
+"KEY" = "КЛЮЧ";
+"Enter a key" = "Введите ключ";
+
+// CityCell
+"CITY" = "ГОРОД";
+
+// TemperatureCell
+"TEMPERATURE" = "ТЕМПЕРАТУРА";
+
+// WindCell
+"WIND" = "ВЕТЕР";
+" m/s" = " м/c";
+
+// ForecastCell
+"FORECAST" = "ПРОГНОЗ";
+
+// ForecastWeekCell
+"FORECAST WEAK" = "ПРОГНОЗ НА НЕДЕЛЮ";
+"Mon" = "Пн";
+"Tue" = "Вт";
+"Wed" = "Ср";
+"Thu" = "Чт";
+"Fri" = "Пт";
+"Sat" = "Сб";
+"Sun" = "Вс";
+
+// MapCell
+"MAP" = "КАРТА";
+

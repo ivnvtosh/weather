@@ -18,7 +18,7 @@ class WindCollectionViewCell: CollectionViewCell {
 			guard let fact = weather?.fact else { return }
 
 			if let windSpeed = fact.windSpeed {
-				self.speed.text = String(windSpeed) + " m/s"
+				self.speed.text = String(windSpeed) + " m/s".localized()
 			}
 
 			if let windDirection = fact.windDirection {
@@ -79,7 +79,7 @@ class WindCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "WIND"
+		self.title.text = "WIND".localized()
 		self.imageView.image = UIImage(systemName: "wind")
 	}
 

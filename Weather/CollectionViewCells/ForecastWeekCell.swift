@@ -62,7 +62,7 @@ class ForecastWeekCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "FORECAST WEAK"
+		self.title.text = "FORECAST WEAK".localized()
 		self.imageView.image = UIImage(systemName: "sun.max.fill")
 	}
 
@@ -91,19 +91,19 @@ extension ForecastWeekCollectionViewCell: UITableViewDataSource {
 			let day = Calendar.current.component(.weekday, from: date)
 			switch day {
 			case 1:
-				cell.day.text = "Sat"
+				cell.day.text = "Sat".localized()
 			case 2:
-				cell.day.text = "Sun"
+				cell.day.text = "Sun".localized()
 			case 3:
-				cell.day.text = "Mon"
+				cell.day.text = "Mon".localized()
 			case 4:
-				cell.day.text = "Tue"
+				cell.day.text = "Tue".localized()
 			case 5:
-				cell.day.text = "Wed"
+				cell.day.text = "Wed".localized()
 			case 6:
-				cell.day.text = "Thu"
+				cell.day.text = "Thu".localized()
 			case 7:
-				cell.day.text = "Fri"
+				cell.day.text = "Fri".localized()
 			default:
 				cell.day.text = "--"
 			}

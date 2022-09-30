@@ -57,7 +57,7 @@ class ForecastCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "FORECAST"
+		self.title.text = "FORECAST".localized()
 		self.imageView.image = UIImage(systemName: "sun.min.fill")
 
 		let frame = self.contentView.frame

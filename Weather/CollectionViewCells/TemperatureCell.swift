@@ -43,7 +43,7 @@ class TemperatureCollectionViewCell: CollectionViewCell {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 
-		self.title.text = "TEMPERATURE"
+		self.title.text = "TEMPERATURE".localized()
 		self.imageView.image = UIImage(systemName: "thermometer")
 
 		let frame = self.contentView.frame
